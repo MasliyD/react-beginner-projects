@@ -8,14 +8,12 @@ function App() {
   const [fromPrice, setFromPrice] = React.useState(0);
   const [toPrice, setToPrice] = React.useState(1);
 
-  // const [rates, setRates] = React.useState({});
   const ratesRef = React.useRef({});
 
   React.useEffect(() => {
     fetch('https://api.metalpriceapi.com/v1/latest?api_key=bedbc712980ecbf2e70527bd94a47e1f&base=USD&currencies=EUR,UAH,GBP,USD')
     .then(data => data.json())
     .then(json => {
-      // setRates(json.rates);
       ratesRef.current = json.rates;
       onChangeToPrice(1);
     })
